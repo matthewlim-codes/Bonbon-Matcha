@@ -7,7 +7,7 @@
   <title>BonBon Matcha | Luxury Matcha Cafe in Cupertino</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Nunito+Sans:wght@700;800;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -24,7 +24,8 @@
           },
           fontFamily: {
             serif: ['Cormorant Garamond', 'serif'],
-            sans: ['Inter', 'sans-serif']
+            sans: ['Inter', 'sans-serif'],
+            display: ['Nunito Sans', 'sans-serif']
           },
           boxShadow: {
             glow: '0 28px 80px rgba(45, 74, 34, 0.18)',
@@ -71,6 +72,97 @@
         radial-gradient(ellipse at 51% 28%, #B5D982 0 20%, transparent 21%),
         radial-gradient(ellipse at 51% 45%, #89AD58 0 29%, transparent 30%),
         linear-gradient(180deg, transparent 0 60%, #D5A368 61% 100%);
+    }
+
+    .matcha-hero {
+      min-height: clamp(34rem, 62vw, 44rem);
+      background:
+        linear-gradient(rgba(72, 78, 45, 0.43), rgba(72, 78, 45, 0.43)),
+        radial-gradient(circle at 18% 24%, rgba(231, 239, 202, 0.24), transparent 14rem),
+        radial-gradient(circle at 78% 60%, rgba(74, 95, 29, 0.24), transparent 18rem),
+        #8b8e78;
+    }
+
+    .hero-drink {
+      --rotate: -18deg;
+      --scale: 1;
+      position: absolute;
+      width: clamp(5.5rem, 11vw, 10rem);
+      height: clamp(8rem, 16vw, 15rem);
+      opacity: 0.78;
+      transform: rotate(var(--rotate)) scale(var(--scale));
+      filter: drop-shadow(0 18px 16px rgba(24, 30, 14, 0.22));
+    }
+
+    .hero-drink .vessel {
+      position: absolute;
+      inset: 9% 18% 6%;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 1.2rem 1.2rem 1.8rem 1.8rem;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.34) 0 4%, transparent 5%),
+        linear-gradient(180deg, #4d641c 0 64%, #a57921 65% 100%);
+      box-shadow: inset 10px 0 18px rgba(255, 255, 255, 0.12), inset -12px 0 16px rgba(0, 0, 0, 0.16);
+    }
+
+    .hero-drink .vessel::before {
+      content: "";
+      position: absolute;
+      inset: 7% 12% auto;
+      height: 24%;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 50% 45%, rgba(230, 245, 198, 0.78), transparent 35%),
+        radial-gradient(circle at 35% 45%, #6e8a29 0 13%, transparent 14%),
+        radial-gradient(circle at 58% 55%, #33470f 0 11%, transparent 12%),
+        rgba(238, 245, 221, 0.52);
+      box-shadow: 0 0 0 0.45rem rgba(232, 238, 214, 0.28);
+    }
+
+    .hero-drink .vessel::after {
+      content: "BONBON MATCHA";
+      position: absolute;
+      left: 50%;
+      top: 54%;
+      width: 7.3rem;
+      transform: translate(-50%, -50%) rotate(90deg);
+      color: rgba(16, 17, 9, 0.86);
+      font-size: 0.43rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-align: center;
+    }
+
+    .hero-drink.can .vessel {
+      inset: 5% 22%;
+      border-radius: 1rem;
+      background:
+        linear-gradient(180deg, #5a711d 0 70%, #b48322 71% 100%);
+    }
+
+    .hero-drink.can .vessel::before {
+      inset: 0 4% auto;
+      height: 16%;
+      background: #e6e4d6;
+      box-shadow: inset 0 -8px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .hero-drink.can .vessel::after {
+      top: 48%;
+    }
+
+    .hero-drink.foam .vessel {
+      background:
+        linear-gradient(180deg, #efece0 0 20%, #5a711d 21% 76%, #b48322 77% 100%);
+    }
+
+    .hero-drink.foam .vessel::before {
+      height: 20%;
+      background:
+        radial-gradient(circle at 55% 36%, #486318 0 4%, transparent 5%),
+        radial-gradient(circle at 40% 62%, #759131 0 4%, transparent 5%),
+        #efeee4;
     }
 
     .reveal {
@@ -161,135 +253,47 @@
   </header>
 
   <main class="overflow-hidden pt-24">
-    <section id="home" class="relative scroll-mt-24 luxury-grain">
-      <div class="mx-auto grid min-h-[calc(100vh-6rem)] max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8 lg:py-24">
-        <div class="relative z-10 reveal">
-          <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-moss/10 bg-white/80 px-4 py-2 text-xs font-bold uppercase tracking-[0.28em] text-moss shadow-sm">
-            <span class="h-2 w-2 rounded-full bg-matcha"></span>
-            Cupertino's Modern Matcha Sanctuary
-          </p>
-          <h1 class="max-w-4xl font-serif text-6xl font-bold leading-[0.9] tracking-[-0.04em] text-moss sm:text-7xl lg:text-8xl">
-            Pure Matcha. Pure Joy.
-          </h1>
-          <p class="mt-7 max-w-2xl text-lg leading-8 text-ink/70 sm:text-xl">
-            Experience 100% ceremonial-grade Japanese matcha crafted with modern innovation in the heart of Cupertino.
-          </p>
-          <div class="mt-10 flex flex-col gap-4 sm:flex-row">
-            <a href="#menu" class="inline-flex items-center justify-center rounded-full border border-moss bg-moss px-8 py-4 text-sm font-bold uppercase tracking-[0.16em] text-white shadow-glow transition hover:-translate-y-1 hover:bg-[#233A1A] focus:outline-none focus:ring-4 focus:ring-moss/20">
-              View Menu
-            </a>
-            <a href="#order" class="inline-flex items-center justify-center rounded-full border border-bark/20 bg-white px-8 py-4 text-sm font-bold uppercase tracking-[0.16em] text-moss shadow-soft transition hover:-translate-y-1 hover:border-moss/30 hover:bg-cream focus:outline-none focus:ring-4 focus:ring-moss/10">
-              Order Online Now
-            </a>
-          </div>
-          <div class="mt-12 grid max-w-xl grid-cols-3 gap-3 text-center sm:gap-4">
-            <div class="rounded-3xl border border-white/80 bg-white/70 p-4 shadow-sm backdrop-blur">
-              <p class="font-serif text-3xl font-bold text-moss">100%</p>
-              <p class="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-ink/50">Ceremonial</p>
-            </div>
-            <div class="rounded-3xl border border-white/80 bg-white/70 p-4 shadow-sm backdrop-blur">
-              <p class="font-serif text-3xl font-bold text-moss">11-10</p>
-              <p class="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-ink/50">Daily Hours</p>
-            </div>
-            <div class="rounded-3xl border border-white/80 bg-white/70 p-4 shadow-sm backdrop-blur">
-              <p class="font-serif text-3xl font-bold text-moss">Cupertino</p>
-              <p class="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-ink/50">Vallco Pkwy</p>
-            </div>
-          </div>
-        </div>
+    <section id="home" class="matcha-hero relative flex scroll-mt-24 items-center justify-center overflow-hidden px-4 py-24 text-center">
+      <div class="hero-drink can left-[-2rem] top-[-3rem]" style="--rotate: -19deg; --scale: 1.05;"><span class="vessel"></span></div>
+      <div class="hero-drink cup left-[5%] top-[54%]" style="--rotate: 8deg; --scale: 1.08;"><span class="vessel"></span></div>
+      <div class="hero-drink can left-[12%] top-[10%]" style="--rotate: 14deg;"><span class="vessel"></span></div>
+      <div class="hero-drink cup left-[31%] top-[-7%]" style="--rotate: -33deg; --scale: .92;"><span class="vessel"></span></div>
+      <div class="hero-drink cup left-[39%] top-[40%]" style="--rotate: -63deg; --scale: 1.05;"><span class="vessel"></span></div>
+      <div class="hero-drink can left-[50%] top-[9%]" style="--rotate: 11deg; --scale: .95;"><span class="vessel"></span></div>
+      <div class="hero-drink can left-[63%] top-[34%]" style="--rotate: -45deg; --scale: 1.08;"><span class="vessel"></span></div>
+      <div class="hero-drink cup left-[69%] top-[-8%]" style="--rotate: 21deg; --scale: .9;"><span class="vessel"></span></div>
+      <div class="hero-drink can right-[6%] top-[12%]" style="--rotate: 31deg;"><span class="vessel"></span></div>
+      <div class="hero-drink foam right-[5%] top-[56%]" style="--rotate: 7deg; --scale: 1.05;"><span class="vessel"></span></div>
+      <div class="hero-drink cup right-[-4rem] bottom-[-3rem]" style="--rotate: -28deg;"><span class="vessel"></span></div>
+      <div class="hero-drink can left-[2%] bottom-[-6rem]" style="--rotate: 64deg; --scale: 1.05;"><span class="vessel"></span></div>
 
-        <div class="relative z-10 reveal lg:pl-8">
-          <div class="absolute -left-8 top-16 hidden h-64 w-64 rounded-full bg-fern/25 blur-3xl lg:block"></div>
-          <div class="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-oat/80 blur-3xl"></div>
-          <div class="relative rounded-[2.5rem] border border-white/70 bg-white/55 p-3 shadow-glow backdrop-blur-md sm:p-5">
-            <div class="relative min-h-[560px] overflow-hidden rounded-[2rem] bg-gradient-to-br from-moss via-[#3E642E] to-[#0F1B0C] p-6 text-white sm:p-8">
-              <div class="absolute inset-x-0 top-0 h-1/2 bg-[radial-gradient(circle_at_30%_20%,rgba(207,232,161,0.35),transparent_28rem)]"></div>
-              <div class="absolute -bottom-24 -right-24 h-72 w-72 rounded-full border border-white/10 bg-white/10 blur-sm"></div>
-              <div class="relative flex h-full min-h-[500px] flex-col justify-between">
-                <div class="flex items-center justify-between">
-                  <span class="rounded-full bg-white/14 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-white/80 backdrop-blur">Ceremonial Bar</span>
-                  <span class="rounded-full border border-white/20 px-4 py-2 text-xs font-semibold text-white/70">Small batch</span>
-                </div>
-
-                <div class="relative mx-auto my-8 grid w-full max-w-lg grid-cols-2 gap-4 sm:gap-6">
-                  <div class="relative col-span-1 h-72 rounded-[2rem] bg-white/12 p-4 shadow-2xl backdrop-blur">
-                    <div class="product-orb mx-auto h-full w-full rounded-[1.5rem] shadow-[inset_0_0_40px_rgba(255,255,255,0.38)]"></div>
-                    <div class="absolute bottom-5 left-5 right-5 rounded-2xl bg-white/82 p-3 text-moss shadow-lg">
-                      <p class="text-xs font-bold uppercase tracking-[0.18em]">Strawberry Matcha</p>
-                    </div>
-                  </div>
-                  <div class="relative col-span-1 mt-12 h-72 rounded-[2rem] bg-white/12 p-4 shadow-2xl backdrop-blur">
-                    <div class="soft-serve mx-auto h-full w-full rounded-[1.5rem] shadow-[inset_0_0_40px_rgba(255,255,255,0.25)]"></div>
-                    <div class="absolute bottom-5 left-5 right-5 rounded-2xl bg-white/82 p-3 text-moss shadow-lg">
-                      <p class="text-xs font-bold uppercase tracking-[0.18em]">Matcha Gelato</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="rounded-[2rem] border border-white/14 bg-white/12 p-5 backdrop-blur-md">
-                  <p class="font-serif text-3xl font-semibold">Layered, vivid, quietly indulgent.</p>
-                  <p class="mt-2 text-sm leading-6 text-white/72">A calm ritual transformed into a modern dessert destination.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="absolute inset-0 bg-[#5f623e]/20"></div>
+      <div class="relative z-10 mx-auto max-w-5xl reveal">
+        <h1 class="font-display text-4xl font-black uppercase tracking-[0.05em] text-white drop-shadow-[0_0_9px_rgba(255,255,255,0.46)] sm:text-6xl sm:tracking-[0.08em] md:text-7xl lg:text-8xl">
+          BONBON MATCHA
+        </h1>
+        <p class="mx-auto mt-5 max-w-3xl font-display text-base font-bold leading-7 text-white/95 drop-shadow-[0_2px_6px_rgba(0,0,0,0.3)] sm:text-2xl sm:leading-8">
+          dedicated to showcasing the beauty of premium Japanese matcha
+        </p>
       </div>
     </section>
 
-    <section id="story" class="relative scroll-mt-24 bg-white py-24 sm:py-28">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-          <div class="reveal">
-            <p class="text-sm font-bold uppercase tracking-[0.28em] text-matcha">Our Story</p>
-            <h2 class="mt-4 font-serif text-5xl font-bold leading-none tracking-[-0.03em] text-moss sm:text-6xl">
-              From Japanese tea fields to Silicon Valley focus.
-            </h2>
-          </div>
-          <div class="reveal">
-            <p class="text-lg leading-8 text-ink/68">
-              BonBon Matcha reimagines the tea ritual for modern Cupertino: direct-sourced ceremonial matcha, precise whisking, and dessert craft presented with the quiet polish of a sanctuary. Every cup and plate is designed to feel intentional, photogenic, and deeply restorative.
-            </p>
-          </div>
+    <section id="story" class="relative scroll-mt-24 bg-white px-4 py-28 sm:px-6 sm:py-32 lg:px-8">
+      <div class="reveal mx-auto max-w-4xl text-center">
+        <h2 class="font-display text-3xl font-black leading-tight tracking-[-0.04em] text-black sm:text-5xl">
+          Discover the Story of BonBon Matcha
+        </h2>
+        <div class="mx-auto mt-6 max-w-3xl space-y-5 text-sm font-bold leading-6 text-black sm:text-base">
+          <p>
+            BonBon Matcha is a modern matcha cafe and dessert destination in Cupertino, CA, dedicated to showcasing the beauty of premium Japanese matcha through thoughtful drinks, elegant sweets, and a calm place to gather.
+          </p>
+          <p>
+            We believe in the power of a carefully crafted cup to bring joy and focus to your day. Whether you crave ceremonial matcha, a layered latte, or a late-night dessert, trust us to deliver delight, one BonBon moment at a time.
+          </p>
         </div>
-
-        <div class="mt-16 grid gap-5 md:grid-cols-3">
-          <article class="reveal rounded-[2rem] border border-moss/8 bg-cream p-8 shadow-soft">
-            <div class="mb-8 grid h-14 w-14 place-items-center rounded-2xl bg-moss text-white">
-              <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path d="M12 21c4.5-3.2 7-7.1 7-11.3A7 7 0 0 0 5 9.7C5 13.9 7.5 17.8 12 21Z" stroke-width="1.8"></path>
-                <path d="M9 10.4c1.8-.4 3.7-1.6 5-3.4.8 1.5 1.3 3.1 1.3 4.5 0 2.2-1.5 3.8-3.4 3.8S8.5 13.8 8.5 12c0-.5.2-1 .5-1.6Z" stroke-width="1.8"></path>
-              </svg>
-            </div>
-            <h3 class="font-serif text-3xl font-bold text-moss">Absolute Authenticity</h3>
-            <p class="mt-4 leading-7 text-ink/65">100% ceremonial-grade matcha sourced directly from Japan. No artificial shortcuts.</p>
-          </article>
-
-          <article class="reveal rounded-[2rem] border border-moss/8 bg-white p-8 shadow-soft">
-            <div class="mb-8 grid h-14 w-14 place-items-center rounded-2xl bg-oat text-moss">
-              <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path d="M4 20h16" stroke-width="1.8" stroke-linecap="round"></path>
-                <path d="M7 20V9.5a5 5 0 0 1 10 0V20" stroke-width="1.8"></path>
-                <path d="M9.3 12.5h5.4M9.3 15.5h5.4" stroke-width="1.8" stroke-linecap="round"></path>
-                <path d="M10 4.8 8.8 2.7M14 4.8l1.2-2.1" stroke-width="1.8" stroke-linecap="round"></path>
-              </svg>
-            </div>
-            <h3 class="font-serif text-3xl font-bold text-moss">Modern Craftsmanship</h3>
-            <p class="mt-4 leading-7 text-ink/65">Time-honored whisking techniques meet contemporary Western &amp; European pastry arts.</p>
-          </article>
-
-          <article class="reveal rounded-[2rem] border border-moss/8 bg-[#F4F7ED] p-8 shadow-soft">
-            <div class="mb-8 grid h-14 w-14 place-items-center rounded-2xl bg-white text-moss shadow-sm">
-              <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path d="M4 17.5c3-4.8 6-7.1 9-7.1s5.3 2.4 7 7.1" stroke-width="1.8" stroke-linecap="round"></path>
-                <path d="M7 13c.8-3.8 3.3-6.8 7.8-9" stroke-width="1.8" stroke-linecap="round"></path>
-                <path d="M4 20h16" stroke-width="1.8" stroke-linecap="round"></path>
-              </svg>
-            </div>
-            <h3 class="font-serif text-3xl font-bold text-moss">Silicon Valley Sanctuary</h3>
-            <p class="mt-4 leading-7 text-ink/65">A physical and digital escape designed for mindful focus and relaxation.</p>
-          </article>
-        </div>
+        <a href="https://pos.chowbus.com/online-ordering/store/BonBon-Matcha/23702?referrer=google_food_ordering" target="_blank" rel="noopener noreferrer" class="mt-8 inline-flex min-w-40 items-center justify-center rounded-md bg-black px-10 py-4 text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-moss focus:outline-none focus:ring-4 focus:ring-black/15">
+          Order Ahead
+        </a>
       </div>
     </section>
 
