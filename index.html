@@ -158,41 +158,66 @@
 
   <main class="overflow-hidden pt-24">
     <section id="home" class="relative scroll-mt-24 overflow-hidden bg-[#858873]">
+      <!-- Desktop video (hidden on mobile) -->
       <video
-        id="hero-video"
-        class="block h-[56.25vw] min-h-[24rem] max-h-[calc(100vh-6rem)] w-full object-cover object-center"
+        id="hero-video-desktop"
+        class="hidden md:block h-[56.25vw] min-h-[24rem] max-h-[calc(100vh-6rem)] w-full object-cover object-center"
         muted
         playsinline
         preload="auto"
       >
-        <source src="bonbon-hero.mp4" type="video/mp4">
+        <source src="hero-desktop.mp4" type="video/mp4">
       </video>
+
+      <!-- Mobile video (hidden on desktop) -->
+      <video
+        id="hero-video-mobile"
+        class="block md:hidden h-[177.78vw] min-h-[24rem] max-h-[calc(100vh-6rem)] w-full object-cover object-center"
+        muted
+        playsinline
+        preload="auto"
+      >
+        <source src="hero-mobile.mp4" type="video/mp4">
+      </video>
+
+      <!-- Play button fallback if autoplay is blocked -->
       <button id="hero-play-btn" style="position:absolute;inset:0;width:100%;height:100%;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;">
         <span style="background:rgba(0,0,0,0.45);border-radius:50%;width:72px;height:72px;display:flex;align-items:center;justify-content:center;">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
         </span>
       </button>
+
       <script>
         (function() {
-          var v = document.getElementById('hero-video');
           var btn = document.getElementById('hero-play-btn');
-          function startVideo() {
+          var vDesktop = document.getElementById('hero-video-desktop');
+          var vMobile = document.getElementById('hero-video-mobile');
+
+          function activeVideo() {
+            return window.innerWidth >= 768 ? vDesktop : vMobile;
+          }
+
+          function startVideo(v) {
             v.muted = true;
             v.play().then(function() {
               btn.style.display = 'none';
             }).catch(function() {});
           }
-          // Try autoplay immediately
-          v.addEventListener('canplay', function() {
-            startVideo();
-          });
-          // Play on button click (fallback)
+
+          function tryAutoplay() {
+            var v = activeVideo();
+            v.addEventListener('canplay', function() { startVideo(v); }, { once: true });
+            if (v.readyState >= 3) startVideo(v);
+          }
+
+          tryAutoplay();
+
           btn.addEventListener('click', function() {
-            startVideo();
+            startVideo(activeVideo());
           });
-          // Hide button once playing
-          v.addEventListener('playing', function() {
-            btn.style.display = 'none';
+
+          [vDesktop, vMobile].forEach(function(v) {
+            v.addEventListener('playing', function() { btn.style.display = 'none'; });
           });
         })();
       </script>
