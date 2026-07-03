@@ -159,13 +159,43 @@
   <main class="overflow-hidden pt-24">
     <section id="home" class="relative scroll-mt-24 overflow-hidden bg-[#858873]">
       <video
+        id="hero-video"
         class="block h-[56.25vw] min-h-[24rem] max-h-[calc(100vh-6rem)] w-full object-cover object-center"
-        autoplay
         muted
         playsinline
+        preload="auto"
       >
-        <source src="Bonbon Presentation Size Save.mp4" type="video/mp4">
+        <source src="bonbon-hero.mp4" type="video/mp4">
       </video>
+      <button id="hero-play-btn" style="position:absolute;inset:0;width:100%;height:100%;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;">
+        <span style="background:rgba(0,0,0,0.45);border-radius:50%;width:72px;height:72px;display:flex;align-items:center;justify-content:center;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+        </span>
+      </button>
+      <script>
+        (function() {
+          var v = document.getElementById('hero-video');
+          var btn = document.getElementById('hero-play-btn');
+          function startVideo() {
+            v.muted = true;
+            v.play().then(function() {
+              btn.style.display = 'none';
+            }).catch(function() {});
+          }
+          // Try autoplay immediately
+          v.addEventListener('canplay', function() {
+            startVideo();
+          });
+          // Play on button click (fallback)
+          btn.addEventListener('click', function() {
+            startVideo();
+          });
+          // Hide button once playing
+          v.addEventListener('playing', function() {
+            btn.style.display = 'none';
+          });
+        })();
+      </script>
     </section>
 
     <section id="story" class="relative scroll-mt-24 bg-white px-4 py-24 sm:px-6 sm:py-28 lg:px-8">
